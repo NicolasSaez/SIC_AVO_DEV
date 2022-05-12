@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SIC_NS_DEV_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Modulo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdUsuarioCreador" Type="Int64" Nullable="false" />
+    <Property Name="Orden" Type="Int32" Nullable="false" />
+    <Property Name="IdUsuarioCreadorHistorial" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Modulo_Rol_Sitio">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdModulo" Type="Int64" Nullable="false" />
+    <Property Name="IdSitio" Type="Int64" Nullable="false" />
+    <Property Name="IdRol" Type="Int64" Nullable="false" />
+    <Property Name="IdPaginaPadre" Type="Int64" />
+    <Property Name="Orden" Type="Int32" Nullable="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdUsuarioCreador" Type="Int64" Nullable="false" />
+    <Property Name="VisibleEnMenu" Type="Boolean" Nullable="false" />
+    <Property Name="IdRolHistorial" Type="Int64" />
+    <Property Name="IdUsuarioCreadorHistorial" Type="Int64" Nullable="false" />
+    <Property Name="PaginaPrincipal" Type="Int64" />
+    <NavigationProperty Name="Rol" Relationship="Self.FK_Modulo_Rol_Sitio_Rol" FromRole="Modulo_Rol_Sitio" ToRole="Rol" />
+    <NavigationProperty Name="Sitio" Relationship="Self.FK_Modulo_Rol_Sitio_Sitio" FromRole="Modulo_Rol_Sitio" ToRole="Sitio" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="IdHistorial" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" />
+    <Property Name="IdHistorial" Type="Int64" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdUsuarioCreador" Type="Int64" Nullable="false" />
+    <Property Name="IdUsuarioCreadorHistorial" Type="Int64" Nullable="false" />
+    <Property Name="IdTipoEmpresa" Type="Int32" Nullable="false" />
+    <Property Name="IdDepartemento" Type="Int32" Nullable="false" />
+    <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+    <Property Name="IdEmpresaHistorial" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Modulo_Rol_Sitio" Relationship="Self.FK_Modulo_Rol_Sitio_Rol" FromRole="Rol" ToRole="Modulo_Rol_Sitio" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Rol" FromRole="Rol" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Sitio">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="URL" Type="String" MaxLength="350" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdTipoSitio" Type="Int64" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUsuarioCreador" Type="Int64" Nullable="false" />
+    <Property Name="IdUsuarioCreadorHistorial" Type="Int64" Nullable="false" />
+    <Property Name="IdSubMenuPadre" Type="Int64" />
+    <Property Name="IdModulo" Type="Int64" />
+    <NavigationProperty Name="Modulo_Rol_Sitio" Relationship="Self.FK_Modulo_Rol_Sitio_Sitio" FromRole="Sitio" ToRole="Modulo_Rol_Sitio" />
+    <NavigationProperty Name="TipoSitio" Relationship="Self.FK_Sitio_TipoSitio" FromRole="Sitio" ToRole="TipoSitio" />
+  </EntityType>
+  <EntityType Name="TipoSitio">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdUsuarioCreador" Type="Int64" Nullable="false" />
+    <Property Name="IdUsuarioCreadorHistorial" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Sitio" Relationship="Self.FK_Sitio_TipoSitio" FromRole="TipoSitio" ToRole="Sitio" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="IdHistorial" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" />
+    <Property Name="IdHistorial" Type="Int64" Nullable="false" />
+    <Property Name="NombreUsuario" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Correo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Rut" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="IdRol" Type="Int64" Nullable="false" />
+    <Property Name="IdRolHistorial" Type="Int64" Nullable="false" />
+    <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+    <Property Name="IdEmpresaHistorial" Type="Int32" Nullable="false" />
+    <Property Name="Observaciones" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="URLFoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PersonaContactoEmergencia" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TelefonoContactoEmergencia" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="ResetPassword" Type="Boolean" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="IdUsuarioCreador" Type="Int64" Nullable="false" />
+    <Property Name="IdUsuarioCreadorHistorial" Type="Int64" />
+    <Property Name="IdDepartamento" Type="Int32" Nullable="false" />
+    <Property Name="IdDepartamentoCargo" Type="Int32" Nullable="false" />
+    <Property Name="IdDepartamentoCargoHistorial" Type="Int64" Nullable="false" />
+    <Property Name="VigenciaPassword" Type="Int32" />
+    <Property Name="AvisoCambioPassword" Type="Int32" />
+    <Property Name="FechaAviso" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Rol" Relationship="Self.FK_Usuario_Rol" FromRole="Usuario" ToRole="Rol" />
+  </EntityType>
+  <Association Name="FK_Modulo_Rol_Sitio_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+    <End Role="Modulo_Rol_Sitio" Type="Self.Modulo_Rol_Sitio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="IdHistorial" />
+      </Principal>
+      <Dependent Role="Modulo_Rol_Sitio">
+        <PropertyRef Name="IdRol" />
+        <PropertyRef Name="IdRolHistorial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Modulo_Rol_Sitio_Sitio">
+    <End Role="Sitio" Type="Self.Sitio" Multiplicity="1" />
+    <End Role="Modulo_Rol_Sitio" Type="Self.Modulo_Rol_Sitio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sitio">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Modulo_Rol_Sitio">
+        <PropertyRef Name="IdSitio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="IdHistorial" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="IdRol" />
+        <PropertyRef Name="IdRolHistorial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sitio_TipoSitio">
+    <End Role="TipoSitio" Type="Self.TipoSitio" Multiplicity="1" />
+    <End Role="Sitio" Type="Self.Sitio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoSitio">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sitio">
+        <PropertyRef Name="IdTipoSitio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SIC_NS_DEV_Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Modulo" EntityType="Self.Modulo" />
+    <EntitySet Name="Modulo_Rol_Sitio" EntityType="Self.Modulo_Rol_Sitio" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" />
+    <EntitySet Name="Sitio" EntityType="Self.Sitio" />
+    <EntitySet Name="TipoSitio" EntityType="Self.TipoSitio" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <AssociationSet Name="FK_Modulo_Rol_Sitio_Rol" Association="Self.FK_Modulo_Rol_Sitio_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Modulo_Rol_Sitio" EntitySet="Modulo_Rol_Sitio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Modulo_Rol_Sitio_Sitio" Association="Self.FK_Modulo_Rol_Sitio_Sitio">
+      <End Role="Sitio" EntitySet="Sitio" />
+      <End Role="Modulo_Rol_Sitio" EntitySet="Modulo_Rol_Sitio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Rol" Association="Self.FK_Usuario_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sitio_TipoSitio" Association="Self.FK_Sitio_TipoSitio">
+      <End Role="TipoSitio" EntitySet="TipoSitio" />
+      <End Role="Sitio" EntitySet="Sitio" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

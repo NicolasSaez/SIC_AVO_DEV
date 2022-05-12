@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SIC_NS_DEV_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Modulo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="250" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="IdUsuarioCreador" Type="bigint" Nullable="false" />
+    <Property Name="Orden" Type="int" Nullable="false" />
+    <Property Name="IdUsuarioCreadorHistorial" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Modulo_Rol_Sitio">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdModulo" Type="bigint" Nullable="false" />
+    <Property Name="IdSitio" Type="bigint" Nullable="false" />
+    <Property Name="IdRol" Type="bigint" Nullable="false" />
+    <Property Name="IdPaginaPadre" Type="bigint" />
+    <Property Name="Orden" Type="int" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="IdUsuarioCreador" Type="bigint" Nullable="false" />
+    <Property Name="VisibleEnMenu" Type="bit" Nullable="false" />
+    <Property Name="IdRolHistorial" Type="bigint" />
+    <Property Name="IdUsuarioCreadorHistorial" Type="bigint" Nullable="false" />
+    <Property Name="PaginaPrincipal" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="IdHistorial" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="IdHistorial" Type="bigint" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="250" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="IdUsuarioCreador" Type="bigint" Nullable="false" />
+    <Property Name="IdUsuarioCreadorHistorial" Type="bigint" Nullable="false" />
+    <Property Name="IdTipoEmpresa" Type="int" Nullable="false" />
+    <Property Name="IdDepartemento" Type="int" Nullable="false" />
+    <Property Name="IdEmpresa" Type="int" Nullable="false" />
+    <Property Name="IdEmpresaHistorial" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sitio">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="URL" Type="varchar" MaxLength="350" Nullable="false" />
+    <Property Name="IdTipoSitio" Type="bigint" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="250" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="FechaCreacion" Type="date" Nullable="false" />
+    <Property Name="IdUsuarioCreador" Type="bigint" Nullable="false" />
+    <Property Name="IdUsuarioCreadorHistorial" Type="bigint" Nullable="false" />
+    <Property Name="IdSubMenuPadre" Type="bigint" />
+    <Property Name="IdModulo" Type="bigint" />
+  </EntityType>
+  <EntityType Name="TipoSitio">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="250" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="FechaCreacion" Type="date" Nullable="false" />
+    <Property Name="IdUsuarioCreador" Type="bigint" Nullable="false" />
+    <Property Name="IdUsuarioCreadorHistorial" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="IdHistorial" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="IdHistorial" Type="bigint" Nullable="false" />
+    <Property Name="NombreUsuario" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Password" Type="varbinary(max)" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Correo" Type="varchar" MaxLength="200" />
+    <Property Name="Apellido" Type="varchar" MaxLength="50" />
+    <Property Name="Rut" Type="varchar" MaxLength="12" />
+    <Property Name="IdRol" Type="bigint" Nullable="false" />
+    <Property Name="IdRolHistorial" Type="bigint" Nullable="false" />
+    <Property Name="IdEmpresa" Type="int" Nullable="false" />
+    <Property Name="IdEmpresaHistorial" Type="int" Nullable="false" />
+    <Property Name="Observaciones" Type="varchar" MaxLength="1000" />
+    <Property Name="Direccion" Type="varchar" MaxLength="200" />
+    <Property Name="URLFoto" Type="varchar(max)" />
+    <Property Name="PersonaContactoEmergencia" Type="varchar" MaxLength="25" />
+    <Property Name="TelefonoContactoEmergencia" Type="varchar" MaxLength="15" />
+    <Property Name="Telefono" Type="varchar" MaxLength="15" />
+    <Property Name="ResetPassword" Type="bit" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="IdUsuarioCreador" Type="bigint" Nullable="false" />
+    <Property Name="IdUsuarioCreadorHistorial" Type="bigint" />
+    <Property Name="IdDepartamento" Type="int" Nullable="false" />
+    <Property Name="IdDepartamentoCargo" Type="int" Nullable="false" />
+    <Property Name="IdDepartamentoCargoHistorial" Type="bigint" Nullable="false" />
+    <Property Name="VigenciaPassword" Type="int" />
+    <Property Name="AvisoCambioPassword" Type="int" />
+    <Property Name="FechaAviso" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_Modulo_Rol_Sitio_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+    <End Role="Modulo_Rol_Sitio" Type="Self.Modulo_Rol_Sitio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="IdHistorial" />
+      </Principal>
+      <Dependent Role="Modulo_Rol_Sitio">
+        <PropertyRef Name="IdRol" />
+        <PropertyRef Name="IdRolHistorial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Modulo_Rol_Sitio_Sitio">
+    <End Role="Sitio" Type="Self.Sitio" Multiplicity="1" />
+    <End Role="Modulo_Rol_Sitio" Type="Self.Modulo_Rol_Sitio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sitio">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Modulo_Rol_Sitio">
+        <PropertyRef Name="IdSitio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sitio_TipoSitio">
+    <End Role="TipoSitio" Type="Self.TipoSitio" Multiplicity="1" />
+    <End Role="Sitio" Type="Self.Sitio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoSitio">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sitio">
+        <PropertyRef Name="IdTipoSitio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="IdHistorial" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="IdRol" />
+        <PropertyRef Name="IdRolHistorial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SIC_NS_DEV_ModelStoreContainer">
+    <EntitySet Name="Modulo" EntityType="Self.Modulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Modulo_Rol_Sitio" EntityType="Self.Modulo_Rol_Sitio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sitio" EntityType="Self.Sitio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoSitio" EntityType="Self.TipoSitio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Modulo_Rol_Sitio_Rol" Association="Self.FK_Modulo_Rol_Sitio_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Modulo_Rol_Sitio" EntitySet="Modulo_Rol_Sitio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Modulo_Rol_Sitio_Sitio" Association="Self.FK_Modulo_Rol_Sitio_Sitio">
+      <End Role="Sitio" EntitySet="Sitio" />
+      <End Role="Modulo_Rol_Sitio" EntitySet="Modulo_Rol_Sitio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sitio_TipoSitio" Association="Self.FK_Sitio_TipoSitio">
+      <End Role="TipoSitio" EntitySet="TipoSitio" />
+      <End Role="Sitio" EntitySet="Sitio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Rol" Association="Self.FK_Usuario_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

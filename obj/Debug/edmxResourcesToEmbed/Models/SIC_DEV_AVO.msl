@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SIC_NS_DEV_ModelStoreContainer" CdmEntityContainer="SIC_NS_DEV_Entities">
+    <EntitySetMapping Name="Modulo">
+      <EntityTypeMapping TypeName="SIC_NS_DEV_Model.Modulo">
+        <MappingFragment StoreEntitySet="Modulo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IdUsuarioCreador" ColumnName="IdUsuarioCreador" />
+          <ScalarProperty Name="Orden" ColumnName="Orden" />
+          <ScalarProperty Name="IdUsuarioCreadorHistorial" ColumnName="IdUsuarioCreadorHistorial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Modulo_Rol_Sitio">
+      <EntityTypeMapping TypeName="SIC_NS_DEV_Model.Modulo_Rol_Sitio">
+        <MappingFragment StoreEntitySet="Modulo_Rol_Sitio">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+          <ScalarProperty Name="IdSitio" ColumnName="IdSitio" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="IdPaginaPadre" ColumnName="IdPaginaPadre" />
+          <ScalarProperty Name="Orden" ColumnName="Orden" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IdUsuarioCreador" ColumnName="IdUsuarioCreador" />
+          <ScalarProperty Name="VisibleEnMenu" ColumnName="VisibleEnMenu" />
+          <ScalarProperty Name="IdRolHistorial" ColumnName="IdRolHistorial" />
+          <ScalarProperty Name="IdUsuarioCreadorHistorial" ColumnName="IdUsuarioCreadorHistorial" />
+          <ScalarProperty Name="PaginaPrincipal" ColumnName="PaginaPrincipal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol">
+      <EntityTypeMapping TypeName="SIC_NS_DEV_Model.Rol">
+        <MappingFragment StoreEntitySet="Rol">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdHistorial" ColumnName="IdHistorial" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IdUsuarioCreador" ColumnName="IdUsuarioCreador" />
+          <ScalarProperty Name="IdUsuarioCreadorHistorial" ColumnName="IdUsuarioCreadorHistorial" />
+          <ScalarProperty Name="IdTipoEmpresa" ColumnName="IdTipoEmpresa" />
+          <ScalarProperty Name="IdDepartemento" ColumnName="IdDepartemento" />
+          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+          <ScalarProperty Name="IdEmpresaHistorial" ColumnName="IdEmpresaHistorial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sitio">
+      <EntityTypeMapping TypeName="SIC_NS_DEV_Model.Sitio">
+        <MappingFragment StoreEntitySet="Sitio">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="IdTipoSitio" ColumnName="IdTipoSitio" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IdUsuarioCreador" ColumnName="IdUsuarioCreador" />
+          <ScalarProperty Name="IdUsuarioCreadorHistorial" ColumnName="IdUsuarioCreadorHistorial" />
+          <ScalarProperty Name="IdSubMenuPadre" ColumnName="IdSubMenuPadre" />
+          <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoSitio">
+      <EntityTypeMapping TypeName="SIC_NS_DEV_Model.TipoSitio">
+        <MappingFragment StoreEntitySet="TipoSitio">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IdUsuarioCreador" ColumnName="IdUsuarioCreador" />
+          <ScalarProperty Name="IdUsuarioCreadorHistorial" ColumnName="IdUsuarioCreadorHistorial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="SIC_NS_DEV_Model.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdHistorial" ColumnName="IdHistorial" />
+          <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Rut" ColumnName="Rut" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="IdRolHistorial" ColumnName="IdRolHistorial" />
+          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+          <ScalarProperty Name="IdEmpresaHistorial" ColumnName="IdEmpresaHistorial" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="URLFoto" ColumnName="URLFoto" />
+          <ScalarProperty Name="PersonaContactoEmergencia" ColumnName="PersonaContactoEmergencia" />
+          <ScalarProperty Name="TelefonoContactoEmergencia" ColumnName="TelefonoContactoEmergencia" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="ResetPassword" ColumnName="ResetPassword" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IdUsuarioCreador" ColumnName="IdUsuarioCreador" />
+          <ScalarProperty Name="IdUsuarioCreadorHistorial" ColumnName="IdUsuarioCreadorHistorial" />
+          <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+          <ScalarProperty Name="IdDepartamentoCargo" ColumnName="IdDepartamentoCargo" />
+          <ScalarProperty Name="IdDepartamentoCargoHistorial" ColumnName="IdDepartamentoCargoHistorial" />
+          <ScalarProperty Name="VigenciaPassword" ColumnName="VigenciaPassword" />
+          <ScalarProperty Name="AvisoCambioPassword" ColumnName="AvisoCambioPassword" />
+          <ScalarProperty Name="FechaAviso" ColumnName="FechaAviso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
