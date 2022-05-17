@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SIC_NS_QAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="IdHistorial" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="IdHistorial" Type="bigint" Nullable="false" />
+    <Property Name="NombreUsuario" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Password" Type="varbinary(max)" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Correo" Type="varchar" MaxLength="200" />
+    <Property Name="Apellido" Type="varchar" MaxLength="50" />
+    <Property Name="Rut" Type="varchar" MaxLength="12" />
+    <Property Name="IdRol" Type="bigint" Nullable="false" />
+    <Property Name="IdRolHistorial" Type="bigint" Nullable="false" />
+    <Property Name="IdEmpresa" Type="int" Nullable="false" />
+    <Property Name="IdEmpresaHistorial" Type="int" Nullable="false" />
+    <Property Name="Observaciones" Type="varchar" MaxLength="1000" />
+    <Property Name="Direccion" Type="varchar" MaxLength="200" />
+    <Property Name="URLFoto" Type="varchar(max)" />
+    <Property Name="PersonaContactoEmergencia" Type="varchar" MaxLength="25" />
+    <Property Name="TelefonoContactoEmergencia" Type="varchar" MaxLength="15" />
+    <Property Name="Telefono" Type="varchar" MaxLength="15" />
+    <Property Name="ResetPassword" Type="bit" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="IdUsuarioCreador" Type="bigint" Nullable="false" />
+    <Property Name="IdUsuarioCreadorHistorial" Type="bigint" />
+    <Property Name="IdDepartamento" Type="int" Nullable="false" />
+    <Property Name="IdDepartamentoCargo" Type="int" Nullable="false" />
+    <Property Name="IdDepartamentoCargoHistorial" Type="bigint" Nullable="false" />
+    <Property Name="VigenciaPassword" Type="int" />
+    <Property Name="AvisoCambioPassword" Type="int" />
+    <Property Name="FechaAviso" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UsuarioRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UsuarioRoles" Type="Self.UsuarioRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsuarioRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SIC_NS_QAModelStoreContainer">
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsuarioRoles" EntityType="Self.UsuarioRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="UsuarioRoles" EntitySet="UsuarioRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SIC_NS_QAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="IdHistorial" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" />
+    <Property Name="IdHistorial" Type="Int64" Nullable="false" />
+    <Property Name="NombreUsuario" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Correo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Rut" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="IdRol" Type="Int64" Nullable="false" />
+    <Property Name="IdRolHistorial" Type="Int64" Nullable="false" />
+    <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+    <Property Name="IdEmpresaHistorial" Type="Int32" Nullable="false" />
+    <Property Name="Observaciones" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="URLFoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PersonaContactoEmergencia" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TelefonoContactoEmergencia" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="ResetPassword" Type="Boolean" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="IdUsuarioCreador" Type="Int64" Nullable="false" />
+    <Property Name="IdUsuarioCreadorHistorial" Type="Int64" />
+    <Property Name="IdDepartamento" Type="Int32" Nullable="false" />
+    <Property Name="IdDepartamentoCargo" Type="Int32" Nullable="false" />
+    <Property Name="IdDepartamentoCargoHistorial" Type="Int64" Nullable="false" />
+    <Property Name="VigenciaPassword" Type="Int32" />
+    <Property Name="AvisoCambioPassword" Type="Int32" />
+    <Property Name="FechaAviso" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="UsuarioRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" FromRole="UsuarioRoles" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="UsuarioRoles" Relationship="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" FromRole="Usuarios" ToRole="UsuarioRoles" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UsuarioRoles" Type="Self.UsuarioRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsuarioRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SIC_NS_QAEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <EntitySet Name="UsuarioRoles" EntityType="Self.UsuarioRoles" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="UsuarioRoles" EntitySet="UsuarioRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

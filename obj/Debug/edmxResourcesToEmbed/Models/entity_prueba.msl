@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SIC_NS_QAModelStoreContainer" CdmEntityContainer="SIC_NS_QAEntities">
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="SIC_NS_QAModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdHistorial" ColumnName="IdHistorial" />
+          <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Rut" ColumnName="Rut" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="IdRolHistorial" ColumnName="IdRolHistorial" />
+          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+          <ScalarProperty Name="IdEmpresaHistorial" ColumnName="IdEmpresaHistorial" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="URLFoto" ColumnName="URLFoto" />
+          <ScalarProperty Name="PersonaContactoEmergencia" ColumnName="PersonaContactoEmergencia" />
+          <ScalarProperty Name="TelefonoContactoEmergencia" ColumnName="TelefonoContactoEmergencia" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="ResetPassword" ColumnName="ResetPassword" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IdUsuarioCreador" ColumnName="IdUsuarioCreador" />
+          <ScalarProperty Name="IdUsuarioCreadorHistorial" ColumnName="IdUsuarioCreadorHistorial" />
+          <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+          <ScalarProperty Name="IdDepartamentoCargo" ColumnName="IdDepartamentoCargo" />
+          <ScalarProperty Name="IdDepartamentoCargoHistorial" ColumnName="IdDepartamentoCargoHistorial" />
+          <ScalarProperty Name="VigenciaPassword" ColumnName="VigenciaPassword" />
+          <ScalarProperty Name="AvisoCambioPassword" ColumnName="AvisoCambioPassword" />
+          <ScalarProperty Name="FechaAviso" ColumnName="FechaAviso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsuarioRoles">
+      <EntityTypeMapping TypeName="SIC_NS_QAModel.UsuarioRoles">
+        <MappingFragment StoreEntitySet="UsuarioRoles">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="SIC_NS_QAModel.Usuarios">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

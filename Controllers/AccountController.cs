@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SIC_AVO_DEV.Models;
+using static SIC_AVO_DEV.Controllers.ManageController;
 
 namespace SIC_AVO_DEV.Controllers
 {
@@ -17,9 +18,11 @@ namespace SIC_AVO_DEV.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        ApplicationDbContext context;
 
         public AccountController()
         {
+            context = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -52,7 +55,7 @@ namespace SIC_AVO_DEV.Controllers
             }
         }
 
-        //
+        
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -61,7 +64,7 @@ namespace SIC_AVO_DEV.Controllers
             return View();
         }
 
-        //
+   
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
@@ -92,7 +95,7 @@ namespace SIC_AVO_DEV.Controllers
             }
         }
 
-        //
+        
         // GET: /Account/VerifyCode
         [AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
@@ -135,45 +138,42 @@ namespace SIC_AVO_DEV.Controllers
             }
         }
 
-        //
+        
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
+                                            .ToList(), "Name", "Name");
             return View();
         }
 
-        //
+        
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(LoginViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
 
-                    // Para obtener más información sobre cómo habilitar la confirmación de cuentas y el restablecimiento de contraseña, visite https://go.microsoft.com/fwlink/?LinkID=320771
-                    //enviar correo electrónico con este vínculo
-                    // string code = await usermanager.generateemailconfirmationtokenasync(user.id);
-                    //var callbackurl = url.action("confirmemail", "account", new { userid = user.id, code = code }, protocol: request.url.scheme);
-                    //await usermanager.sendemailasync(user.id, "confirmar cuenta", "para confirmar la cuenta, haga clic <a href=\"" + callbackurl + "\">aquí</a>");
-
-                    return RedirectToAction("Index", "Home");
+             
+                    return RedirectToAction("Index", "Home" , new { Message = ManageMessageId.UserRegister });
                 }
+                ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
+                                          .ToList(), "Name", "Name");
                 AddErrors(result);
             }
-
-            // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
             return View(model);
         }
 
-        //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
@@ -186,7 +186,6 @@ namespace SIC_AVO_DEV.Controllers
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
-        //
         // GET: /Account/ForgotPassword
         [AllowAnonymous]
         public ActionResult ForgotPassword()
@@ -194,7 +193,6 @@ namespace SIC_AVO_DEV.Controllers
             return View();
         }
 
-        //
         // POST: /Account/ForgotPassword
         [HttpPost]
         [AllowAnonymous]
@@ -210,19 +208,13 @@ namespace SIC_AVO_DEV.Controllers
                     return View("ForgotPasswordConfirmation");
                 }
 
-                // Para obtener más información sobre cómo habilitar la confirmación de cuentas y el restablecimiento de contraseña, visite https://go.microsoft.com/fwlink/?LinkID=320771
-                // Enviar correo electrónico con este vínculo
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Restablecer contraseña", "Para restablecer la contraseña, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                
             }
 
             // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
             return View(model);
         }
 
-        //
         // GET: /Account/ForgotPasswordConfirmation
         [AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
@@ -230,7 +222,6 @@ namespace SIC_AVO_DEV.Controllers
             return View();
         }
 
-        //
         // GET: /Account/ResetPassword
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
@@ -238,7 +229,6 @@ namespace SIC_AVO_DEV.Controllers
             return code == null ? View("Error") : View();
         }
 
-        //
         // POST: /Account/ResetPassword
         [HttpPost]
         [AllowAnonymous]
@@ -264,7 +254,7 @@ namespace SIC_AVO_DEV.Controllers
             return View();
         }
 
-        //
+     
         // GET: /Account/ResetPasswordConfirmation
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
@@ -272,7 +262,7 @@ namespace SIC_AVO_DEV.Controllers
             return View();
         }
 
-        //
+        
         // POST: /Account/ExternalLogin
         [HttpPost]
         [AllowAnonymous]
@@ -297,7 +287,7 @@ namespace SIC_AVO_DEV.Controllers
             return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
-        //
+        
         // POST: /Account/SendCode
         [HttpPost]
         [AllowAnonymous]
@@ -316,8 +306,7 @@ namespace SIC_AVO_DEV.Controllers
             }
             return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
         }
-
-        //
+   
         // GET: /Account/ExternalLoginCallback
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
@@ -346,10 +335,9 @@ namespace SIC_AVO_DEV.Controllers
                     return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
             }
         }
-
-            //
-            // POST: /Account/ExternalLoginConfirmation
-            [HttpPost]
+    
+        // POST: /Account/ExternalLoginConfirmation
+        [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
@@ -385,7 +373,6 @@ namespace SIC_AVO_DEV.Controllers
             return View(model);
         }
     
-        //
         // POST: /Account/LogOff
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -395,7 +382,6 @@ namespace SIC_AVO_DEV.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        //
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()

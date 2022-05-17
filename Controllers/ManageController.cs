@@ -55,7 +55,8 @@ namespace SIC_AVO_DEV.Controllers
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Su contraseña se ha cambiado."
+                message == ManageMessageId.UserRegister ? "El usuario se ha registrado"
+                :message == ManageMessageId.ChangePasswordSuccess ? "Su contraseña se ha cambiado."
                 : message == ManageMessageId.SetPasswordSuccess ? "Su contraseña se ha establecido."
                 : message == ManageMessageId.SetTwoFactorSuccess ? "Su proveedor de autenticación de dos factores se ha establecido."
                 : message == ManageMessageId.Error ? "Se ha producido un error."
@@ -375,6 +376,7 @@ namespace SIC_AVO_DEV.Controllers
 
         public enum ManageMessageId
         {
+            UserRegister,
             AddPhoneSuccess,
             ChangePasswordSuccess,
             SetTwoFactorSuccess,

@@ -172,6 +172,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -191,23 +193,9 @@
     <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>SIC_NS_DEV_MODEL.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\entity_prueba.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>entity_prueba.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\entity_prueba.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>entity_prueba.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\entity_prueba.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>entity_prueba.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\RolesViewModel.cs" />
     <Compile Include="Models\SIC_NS_DEV_MODEL.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -222,15 +210,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SIC_NS_DEV_MODEL.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Usuario.cs">
-      <DependentUpon>entity_prueba.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UsuarioRoles.cs">
-      <DependentUpon>entity_prueba.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Usuarios.cs">
-      <DependentUpon>entity_prueba.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -247,16 +226,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\entity_prueba.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>entity_prueba.edmx</DependentUpon>
-      <LastGenOutput>entity_prueba.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\entity_prueba.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>entity_prueba.edmx</DependentUpon>
-      <LastGenOutput>entity_prueba.cs</LastGenOutput>
-    </Content>
     <Content Include="Models\SIC_NS_DEV_MODEL.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SIC_NS_DEV_MODEL.edmx</DependentUpon>
@@ -275,13 +244,6 @@
     </EntityDeploy>
     <Content Include="Models\SIC_NS_DEV_MODEL.edmx.diagram">
       <DependentUpon>SIC_NS_DEV_MODEL.edmx</DependentUpon>
-    </Content>
-    <EntityDeploy Include="Models\entity_prueba.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>entity_prueba.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\entity_prueba.edmx.diagram">
-      <DependentUpon>entity_prueba.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -2183,9 +2145,12 @@
     <Content Include="Theme\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Theme\vendor\jquery\jquery.min.map" />
     <Content Include="Theme\vendor\jquery\jquery.slim.min.map" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

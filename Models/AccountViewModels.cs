@@ -51,7 +51,7 @@ namespace SIC_AVO_DEV.Models
     {
         [Required]
         [Display(Name = "Usuario")]
-        [EmailAddress]
+        //[EmailAddress]
         public string Email { get; set; }
 
         [Required]
@@ -66,8 +66,16 @@ namespace SIC_AVO_DEV.Models
     public class RegisterViewModel
     {
         [Required]
-        [EmailAddress]
+        [Display(Name = "UsuarioRoles")]
+        public string UserRoles { get; set; }
+
+        [Required]
         [Display(Name = "Usuario")]
+        public string UserName { get; set; }
+
+        [Required]
+		[EmailAddress]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
@@ -85,7 +93,7 @@ namespace SIC_AVO_DEV.Models
     public class ResetPasswordViewModel
     {
         [Required]
-        [EmailAddress]
+        //[EmailAddress]
         [Display(Name = "Usuario")]
         public string Email { get; set; }
 
@@ -102,11 +110,17 @@ namespace SIC_AVO_DEV.Models
 
         public string Code { get; set; }
     }
+    public class RegisterRolModel
+    {
+        [Display(Name = "Nombre rol")]
+        public string NameRol { get; set; }
 
+    }
+    
     public class ForgotPasswordViewModel
     {
         [Required]
-        [EmailAddress]
+        //[EmailAddress]
         [Display(Name = "Usuario")]
         public string Email { get; set; }
     }
