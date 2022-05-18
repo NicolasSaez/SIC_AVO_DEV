@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Sitios_List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sitios_List</h2>
+
+<div>
+    <table id="tblAdminSitios"></table>
+</div>
+<script src="~/Theme/vendor/jquery/jquery.js"></script>
+<script src="~/Theme/vendor/jquery/jquery.min.js"></script>
+<script>
+    var tablaSitios;
+    $(document).ready(function () {
+        console.log("si")
+        CargarListaSitios();
+
+    });
+    function CargarListaSitios() {
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: "../Sitios/GetListSitios",
+            data: null,
+            dataType: "json",
+            async: true,
+            success: OnSuccessCargarListaSitios,
+            failure: function (response) {
+                alert(response.d);
+            },
+            error: function (result) {
+                console.log('Error - GetListSitios')
+            }
+        });
+    }
+
+
+
+    function OnSuccessCargarListaSitios(response) {
+        $('#tablaHallazgo').DataTable({
+            "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todos"]],
+            "searching": true,
+            "paging": true,
+            "info": false,
+            "lengthChange": true,
+            "bDestroy": true,
+            "language": {
+                "search": "Buscar:",
+                "lengthMenu": "Mostrar _MENU_ registos por página",
+                "zeroRecords": "No existen datos disponibles",
+                "info": "Página _PAGE_ de _PAGES_",
+                "infoEmpty": "No existen datos disponibles",
+                "infoFiltered": "(Filtro realizado en un total de _MAX_ registros.)",
+                "paginate": {
+                    "previous": "Anterior",
+                    "next": "Siguiente"
+                }
+            },
+            data: response.d,
+            columns: [
+                { 'data': 'Id' },
+                { 'data': 'Nombre' },
+                { 'data': 'Descripcion'},
+                { 'data': 'URL' },
+                { 'data': 'Nombre' },
+                { 'data': 'IdModulo' },
+                { 'data': 'IdSubMenuPadre' }],
+              
+            columnDefs: [
+                { "className": "dt-center", "targets": "_all" }
+            ],
+        });
+
+
+
+        $('#ModalHallazgo').modal('show');
+
+
+
+    }
+   
+   
+</script>

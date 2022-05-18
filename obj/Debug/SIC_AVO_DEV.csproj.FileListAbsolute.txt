@@ -51,6 +51,7 @@ C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\bin\roslyn\vbc.rsp
 C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\bin\roslyn\VBCSCompiler.exe
 C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\bin\Antlr3.Runtime.dll
+C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\bin\Data.dll
 C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\bin\EntityFramework.dll
 C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\bin\EntityFramework.SqlServer.dll
 C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\bin\Microsoft.AspNet.Identity.Core.dll
@@ -77,6 +78,8 @@ C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\bin\System.Web.WebPages.De
 C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\bin\System.Web.WebPages.dll
 C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\bin\System.Web.WebPages.Razor.dll
 C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\bin\WebGrease.dll
+C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\bin\Data.pdb
+C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\bin\Data.dll.config
 C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\bin\System.Web.Helpers.xml
 C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\bin\System.Web.Mvc.xml
 C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\bin\System.Web.Optimization.xml
@@ -125,6 +128,3 @@ C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\obj\Debug\SIC_AVO_DEV.cspr
 C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\obj\Debug\SIC_AVO_DEV.csproj.CopyComplete
 C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\obj\Debug\SIC_AVO_DEV.dll
 C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\obj\Debug\SIC_AVO_DEV.pdb
-C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\bin\Data.dll
-C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\bin\Data.pdb
-C:\Users\saezn\OneDrive\Desktop\Proyectos\SIC_AVO_DEV\bin\Data.dll.config

@@ -11,6 +11,7 @@
     @*@Styles.Render("~/Theme/css")
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")*@
+
 </head>
 <body id="page-top">
     <!--Page wrapper-->
@@ -60,7 +61,9 @@
 
                         @Html.ActionLink("Modulos Administración", "Register", "Account", new { @class = "collapse-item" })
 
-                        <a class="collapse-item" @Html.ActionLink("Sitios Administración", "Register", "Account")</a>
+                        <a class="collapse-item" @Html.ActionLink("Sitios Administración", "List", "Administracion")</a>
+
+                        @*<a class="collapse-item" href="~//Views/Administracion/Sitios_List.cshtml">Sitios</a>*@
 
                         <a class="collapse-item" @Html.ActionLink("Usuario Administracion", "Register", "Account")</a>
 
@@ -283,7 +286,7 @@
     <script src="~/Theme/js/sb-admin-2.min.js"></script>
     <!-- Page level plugins -->
     <script src="~/Theme/vendor/chart.js/Chart.min.js"></script>
-
+    <script src="~/Theme/vendor/jquery/jquery.js"></script>
     <!-- Page level custom scripts -->
     <script src="~/Theme/js/demo/chart-area-demo.js"></script>
     <script src="~/Theme/js/demo/chart-pie-demo.js"></script>

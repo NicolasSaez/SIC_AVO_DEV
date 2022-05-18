@@ -1,0 +1,32 @@
+﻿
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@helper GetTreeView(List<Data.Sitio> siteMenu, int parentID)
+{
+    foreach (var i in siteMenu.Where(a => a.IdSubMenuPadre.Equals(parentID)))
+    {
+        <li>
+            @{var submenu = siteMenu.Where(a => a.IdSubMenuPadre.Equals(i.IdModulo)).Count();}
+            @if (submenu > 0)
+            {
+                <span class="collapse collapsible">&nbsp;</span>
+            }
+            else
+            {
+                <span style="width:15px; display:inline-block">&nbsp;</span>
+            }
+            <span>
+                <a href="@i.URL">@i.Activo</a>
+            </span>
+            @if (submenu > 0)
+            {
+                <ul>
+                    @*@Treeview.GetTreeView(siteMenu, i.)*@
+                 
+                </ul>
+            }
+        </li>
+    }
+}
