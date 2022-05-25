@@ -59,9 +59,9 @@
                 <div id="collapse1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
 
-                        @Html.ActionLink("Modulos Administración", "Register", "Account", new { @class = "collapse-item" })
+                        <a class="collapse-item" @Html.ActionLink("Guardar Imagen", "Index", "Content")</a>
 
-                        @Html.ActionLink("Sitios Administración", "List", "Administracion")
+                        <a class="collapse-item" @Html.ActionLink("Sitios Administración", "List", "Administracion")</a>
 
                         @*<a class="collapse-item" href="~//Views/Administracion/Sitios_List.cshtml">Sitios</a>*@
 
