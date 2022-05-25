@@ -13,5 +13,12 @@ namespace SIC_AVO_DEV.Controllers
         {
             return View();
         }
+
+        public ActionResult Upload()
+        {
+            return View();
+        }
+
+
     }
 }

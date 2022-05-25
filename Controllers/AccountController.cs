@@ -78,9 +78,8 @@ namespace SIC_AVO_DEV.Controllers
 
             }
     
-
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-    
+            
             switch (result)
             { 
                 case SignInStatus.Success:
@@ -95,8 +94,8 @@ namespace SIC_AVO_DEV.Controllers
                     return View(model);
             }
         }
-
-        
+    
+     
         // GET: /Account/VerifyCode
         [AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
@@ -121,10 +120,7 @@ namespace SIC_AVO_DEV.Controllers
                 return View(model);
             }
 
-            // El código siguiente protege de los ataques por fuerza bruta a los códigos de dos factores. 
-            // Si un usuario introduce códigos incorrectos durante un intervalo especificado de tiempo, la cuenta del usuario 
-            // se bloqueará durante un período de tiempo especificado. 
-            // Puede configurar el bloqueo de la cuenta en IdentityConfig
+
             var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
@@ -147,6 +143,8 @@ namespace SIC_AVO_DEV.Controllers
             ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
                                             .ToList(), "Name", "Name");
             return View();
+
+            
         }
 
         
@@ -164,7 +162,6 @@ namespace SIC_AVO_DEV.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
-
              
                     return RedirectToAction("Index", "Home" , new { Message = ManageMessageId.UserRegister });
                 }

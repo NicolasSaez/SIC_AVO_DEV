@@ -44,6 +44,7 @@ namespace SIC_AVO_DEV.Controllers
 			return View(Roles);
 
 		}
+
 		public Boolean isAdminUser()
 		{
 			if (User.Identity.IsAuthenticated)
