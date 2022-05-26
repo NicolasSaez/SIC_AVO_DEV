@@ -5,7 +5,6 @@
 }
 
 
-
 <p>
     @Html.ActionLink("Nuevo", "Create", null, new { @class = "btn btn-primary" })
 </p>
@@ -25,6 +24,9 @@
         <th>
             <b>Descripcion</b>
         </th>
+        <th>
+            <b>Descargar</b>
+        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -42,7 +44,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Descripcion)
             </td>
+            <td>
+                @Html.ActionLink("Descargar", "DownloadFile", new { Name = item.Url })
+            </td>
         </tr>
      }
+    
 </table>
 

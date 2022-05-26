@@ -37,5 +37,7 @@ namespace SIC_AVO_DEV.ViewModels
 
         public string Url { get; set; }
 
+        public string NombreImagen { get; set; }
+
     }
 }

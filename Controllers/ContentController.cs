@@ -28,7 +28,8 @@ namespace SIC_AVO_DEV.Controllers
                 s.Titulo,
                 s.Image,
                 s.Contents,
-                s.Descripcion
+                s.Descripcion,
+                s.Url
             });
 
             List<ContentViewModel> contentModel = content.Select(item => new ContentViewModel()
@@ -37,10 +38,11 @@ namespace SIC_AVO_DEV.Controllers
                 Titulo = item.Titulo,
                 Image = item.Image,
                 Descripcion = item.Descripcion,
-                Contents = item.Contents
+                Contents = item.Contents,
+                Url = item.Url
             }).ToList();
             return View(contentModel);
-            
+
         }
 
         /// <summary>
@@ -60,11 +62,9 @@ namespace SIC_AVO_DEV.Controllers
                 return null;
             }
         }
-        /// <summary>
-        /// 
-        /// </summary>
+
         /// <param name="Id"></param>
-        /// <returns></returns>
+
         public byte[] GetImageFromDataBase(int Id)
         {
 
@@ -79,11 +79,9 @@ namespace SIC_AVO_DEV.Controllers
         {
             return View();
         }
-        /// <summary>
-        /// Save content and images
-        /// </summary>
+
         /// <param name="model"></param>
-        /// <returns></returns>
+     
         [Route("Create")]
         [HttpPost]
         public ActionResult Create(ContentViewModel model)
@@ -95,8 +93,8 @@ namespace SIC_AVO_DEV.Controllers
             var carpeta = "~/FileUpload/";
             var nomArchivo = file.FileName;
             string path = Server.MapPath(carpeta + nomArchivo);
-            //guardar a carpera 
-            int i = service.UploadImageInDataBase(file, model , path);
+            //guardar a carpeta 
+            int i = service.UploadImageInDataBase(file, model, path);
             if (i == 1)
             {
                 file.SaveAs(path);
@@ -104,5 +102,18 @@ namespace SIC_AVO_DEV.Controllers
             }
             return View(model);
         }
+
+        public FileResult DownloadFile(string Name)
+        {
+            var nombreImg = Name.Split('\\')[8].ToString();
+            string path = Server.MapPath("~/FileUpload/") + nombreImg;
+            byte[] bytes = System.IO.File.ReadAllBytes(path);
+
+            return File(bytes, "application/octet-stream", nombreImg);
+
+        }
+       
+
+
     }
 }
