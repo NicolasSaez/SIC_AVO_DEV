@@ -35,5 +35,7 @@ namespace SIC_AVO_DEV.ViewModels
         [Required]
         public byte[] Image { get; set; }
 
+        public string Url { get; set; }
+
     }
 }

@@ -13,5 +13,6 @@ namespace SIC_AVO_DEV.Models
         public string Descripcion { get; set; }
         public string Contents { get; set; }
         public byte[] Image { get; set; }
+        public string Url { get; set; }
     }
 }

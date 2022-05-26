@@ -2430,6 +2430,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="FileUpload\" />
     <Folder Include="Views\Sitios\" />
     <Folder Include="Views\Users\" />
   </ItemGroup>
